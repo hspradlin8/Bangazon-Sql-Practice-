@@ -94,7 +94,11 @@ Order by department name, then by employee last name, and finally by employee fi
 
 
 /*15.List all employees along with their current computer information make and manufacturer combined into a field entitled ComputerInfo. If they do not have a computer, this field should say "N/A".*/
-
+SELECT e.FirstName, e.LastName, IsNull(c.Make + ' ' + c.Manufacturer, 'N/A') AS ComputerInfo 
+FROM Employee e 
+LEFT JOIN ComputerEmployee ce ON e.Id = ce.EmployeeId
+LEFT JOIN Computer c ON ce.ComputerId = c.Id
+ 
 
 
 /*16.List all computers that were purchased before July 2019 that are have not been decommissioned.*/
